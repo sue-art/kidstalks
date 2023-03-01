@@ -1,0 +1,42 @@
+.section-examples .container .col-sm-6 img{
+  border-color: $info;
+}
+@include media-breakpoint-down(xs) {
+  .page-header{
+    .content-center {
+      h1{
+        font-size: 50px;
+      }
+    }
+  }
+  .navbar-toggler {
+    display: none;
+  }
+  .index-page {
+    .squares {
+      height: 200px !important;
+      width: 120px !important;
+      h1{
+        font-size: medium;
+      }
+    }
+  }
+  .item {
+    flex: 0 0 32.7%;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .index-page {
+    .squares {
+      width: 200px !important;
+      height: 300px!important;
+      h1{
+        font-size: medium;
+      }
+    }
+  } 
+  .item {
+      flex: 0 0 32.7%;
+  }
+}
