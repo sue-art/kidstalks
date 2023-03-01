@@ -1,0 +1,9 @@
+[build]
+  base    = ""
+  publish = "build"
+  command = "react-scripts build && gulp licenses"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

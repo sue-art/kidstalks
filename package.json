@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/sue-art/kidstalks.git"
   },
-  "homepage": "https://topictalksforkids.netlify.app/",
+  "homepage": ".",
   "keywords": [
     "react",
     "reactjs",
