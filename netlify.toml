@@ -1,7 +1,7 @@
 [build]
   base    = ""
   publish = "build"
-  command = "react-scripts build && gulp licenses"
+  command = "npm run build"
 
 [[redirects]]
   from = "/*"
