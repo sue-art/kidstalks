@@ -1,46 +1,35 @@
-/*!
+import React, { useEffect, useState } from "react";
 
-=========================================================
-* BLK Design System React - v1.2.1
-=========================================================
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "lib/firebase";
 
-* Product Page: https://www.creative-tim.com/product/blk-design-system-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/blk-design-system-react/blob/main/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
-import { Link } from "react-router-dom";
 // reactstrap components
 import {
   Button,
-  Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
   Nav,
   Container,
-  Row,
-  Col,
-  UncontrolledTooltip,
 } from "reactstrap";
 
-export default function IndexNavbar() {
+//User with Redux
+import Logout from "components/Form/LogoutForm";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+export default function IndexNavbar_old() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [collapseOut, setCollapseOut] = React.useState("");
   const [color, setColor] = React.useState("navbar-transparent");
+  const [user] = useAuthState(auth);
+  const [loading] = useAuthState(auth);
+
   React.useEffect(() => {
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
     window.addEventListener("scroll", changeColor);
     return function cleanup() {
       window.removeEventListener("scroll", changeColor);
@@ -74,6 +63,7 @@ export default function IndexNavbar() {
       .getElementById("download-section")
       .scrollIntoView({ behavior: "smooth" });
   };
+
   return (
     <Navbar className={"fixed-top " + color} color-on-scroll="100" expand="lg">
       <Container>
@@ -92,6 +82,40 @@ export default function IndexNavbar() {
             <span className="navbar-toggler-bar bar3" />
           </button>
         </div>
+        <Nav navbar>
+          {user ? (
+            <NavLink>
+              <p>Welcome {user.email}</p>
+            </NavLink>
+          ) : (
+            <NavItem>
+              <Button
+                className="nav-link d-none d-lg-block"
+                color="primary"
+                tag={Link}
+                to="./signup-page"
+              >
+                <i className="tim-icons icon-spaceship" />
+                Sign Up
+              </Button>
+            </NavItem>
+          )}
+          {user ? (
+            <Logout />
+          ) : (
+            <NavItem>
+              <NavLink tag={Link} to="./login-page">
+                Log In
+              </NavLink>
+            </NavItem>
+          )}
+
+          <NavItem>
+            <NavLink tag={Link} to="./contact-page">
+              Contact Us
+            </NavLink>
+          </NavItem>
+        </Nav>
       </Container>
     </Navbar>
   );

@@ -6,7 +6,8 @@
   &__container {
     display: flex;
     padding: 0;
-    transition: transform 300ms ease 100ms;
+    //transition: transform 300ms ease 100ms;
+    transition: transform ease-out 0.45s;
     z-index: 3;
     width: 100%;
   }
@@ -21,9 +22,28 @@
 
   &:not(&--open):hover .item {
     transform: translateX(-25%);
+    
   }
 
   &:not(&--open) .item:hover ~ .item {
     transform: translateX(25%);
   }
+
+  &:not(&--open) .item:hover ~ .item {
+    transform: translateX(25%);
+  }
+
+
+  .item:first-child:hover ~ .item {
+    transform: translateX(35%) !important;
+    margin-left: auto;
+
+  }
+  .item:first-child:hover{
+    position: relative !important;
+    transform:  translateX(25%) scale(1.5)!important;
+    margin-right: 41px;
+
+  }
+ 
 }

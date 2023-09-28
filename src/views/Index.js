@@ -14,7 +14,6 @@ import Notifications from "views/IndexSections/Notifications.js";
 import Typography from "views/IndexSections/Typography.js";
 import JavaScript from "views/IndexSections/JavaScript.js";
 import NucleoIcons from "views/IndexSections/NucleoIcons.js";
-import Signup from "views/IndexSections/Signup.js";
 import Examples from "views/IndexSections/Examples.js";
 import Download from "views/IndexSections/Download.js";
 import TopicCards from "views/IndexSections/TopicCards";
@@ -41,8 +40,6 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledTooltip,
-  UncontrolledCarousel,
 } from "reactstrap";
 
 const carouselItems = [
@@ -80,7 +77,7 @@ export default function Index() {
     // Specify how to clean up after this effect:
     return function cleanup() {
       if (navigator.platform.indexOf("Win") > -1) {
-        ps.destroy();
+        //ps.destroy();
         document.documentElement.className += " perfect-scrollbar-off";
         document.documentElement.classList.remove("perfect-scrollbar-on");
       }

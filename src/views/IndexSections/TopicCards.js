@@ -10,11 +10,9 @@ class TopicCards extends React.Component {
 
   render() {
     const categoryList = toppicCategory.map((item) => (
-      <div id={item.name} color={item.color}>
+      <div id={item.name} key={item.id} color={item.color}>
         <hr className="line-info" />
-        <h1 category={item.name} key={item.id}>
-          {item.name}
-        </h1>
+        <h1 category={item.name}>{item.name}</h1>
         <Slider>
           {CardItems.filter((cardItem) => cardItem.category === item.name).map(
             (movie) => (
