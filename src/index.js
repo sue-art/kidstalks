@@ -11,6 +11,7 @@ import SignupPage from "views/examples/SignupPage";
 import ContactPage from "views/examples/ContactPage";
 import LoginPage from "views/examples/LoginPage";
 import NoPage from "views/examples/NoPage";
+import MyAccountPage from "views/examples/MyAccountPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -23,10 +24,13 @@ root.render(
         path="/signup-page"
         render={(props) => <SignupPage {...props} />}
       />
-      <Route path="/login-page" render={(props) => <LoginPage {...props} />} />
       <Route
         path="/contact-page"
         render={(props) => <ContactPage {...props} />}
+      />
+      <Route
+        path="/myaccount-page"
+        render={(props) => <MyAccountPage {...props} />}
       />
       <Route path="*" render={(props) => <NoPage {...props} />} />
     </Switch>

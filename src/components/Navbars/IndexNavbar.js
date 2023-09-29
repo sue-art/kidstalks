@@ -18,7 +18,7 @@ import {
 import Logout from "components/Form/LogoutForm";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-export default function IndexNavbar_old() {
+export default function IndexNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [collapseOut, setCollapseOut] = React.useState("");
   const [color, setColor] = React.useState("navbar-transparent");
@@ -82,11 +82,11 @@ export default function IndexNavbar_old() {
             <span className="navbar-toggler-bar bar3" />
           </button>
         </div>
-        <Nav navbar>
+        <Nav>
           {user ? (
-            <NavLink>
+            <NavItem>
               <p>Welcome {user.email}</p>
-            </NavLink>
+            </NavItem>
           ) : (
             <NavItem>
               <Button
@@ -100,8 +100,17 @@ export default function IndexNavbar_old() {
               </Button>
             </NavItem>
           )}
+          {user && (
+            <NavItem>
+              <NavLink tag={Link} to="./myaccount-page">
+                My Account
+              </NavLink>
+            </NavItem>
+          )}
           {user ? (
-            <Logout />
+            <NavItem>
+              <Logout />
+            </NavItem>
           ) : (
             <NavItem>
               <NavLink tag={Link} to="./login-page">
